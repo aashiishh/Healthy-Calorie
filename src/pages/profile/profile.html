@@ -1,0 +1,49 @@
+<ion-header>
+
+    <ion-navbar>
+      <div style="display:flex;">
+          <ion-title text-start>Edit Profile</ion-title>
+          <ion-buttons text-end>
+            <button ion-button styl="text-transform: none" (click)="close()" icon-only large><ion-icon name="close-circle"></ion-icon></button>
+          </ion-buttons>
+      </div>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <div  *ngIf="authServ.getCurrentUser()">
+      <div  *ngFor="let dbUser of usersList$ | async" [hidden]="authServ.getCurrentUser().email != dbUser.email">
+        <div text-center>
+          <ion-img [hidden]="!dbUser.photoURL" class="circle-pic" width="100" height="100" src="{{dbUser.photoURL}}"></ion-img>
+          <!-- <ion-img [hidden]="dbUser.photoURL" class="circle-pic" width="100" height="100" src="http://downloadicons.net/sites/default/files/contacts-icon-64397.png"></ion-img> -->
+       </div>
+     <ion-list>
+      <ion-item>
+        <!-- <ion-label floating>Name</ion-label> -->
+        <ion-input type="text" [hidden]="!dbUser.name" placeholder='{{dbUser.name}}' [(ngModel)]="user.name" required></ion-input>
+        <ion-input type="text" placeholder="Name" [(ngModel)]="user.name" [hidden]="dbUser.name" required></ion-input> 
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label floating>Email</ion-label> -->
+        <ion-input type="text" placeholder="{{dbUser.email}}" [(ngModel)]="user.email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label floating>Phone Number</ion-label> -->
+        <ion-input  required type="number" [hidden]="!dbUser.phoneNo" placeholder="{{dbUser.phoneNo}}" [(ngModel)]="user.phoneNo"></ion-input>
+        <ion-input  required type="number" placeholder="Phone Number" [hidden]="dbUser.phoneNo" [(ngModel)]="user.phoneNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [hidden]="!dbUser.photoURL" placeholder="{{dbUser.photoURL}}" [(ngModel)]="user.photoURL"></ion-input>
+        <ion-input [hidden]="dbUser.photoURL" placeholder="Paste Photo URl Here" [(ngModel)]="user.photoURL"></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <div style="margin-top:30px">
+    <button ion-button samll block [disabled]="!user.name && !user.email && !user.phoneNo && !user.photoURL" (click)="updateProfile(user,dbUser)">save</button>
+  </div>
+</div>
+</div>
+  </ion-content>
+  

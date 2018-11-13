@@ -8,31 +8,61 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AngularFireModule } from 'angularfire2';
 import { firebase_config } from './firebase.credetials';
-import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth} from 'angularfire2/auth';
 import { DatabaseService } from '../Services/databaseService';
+import { LoginPage } from '../pages/login/login';
+import { SignUpPage } from '../pages/sign-up/sign-up';
+import { AuthService } from '../Services/authService';
+import { MessageService } from '../Services/messageService';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { PopoverPage } from '../pages/popover/popover';
+import { ProfilePage } from '../pages/profile/profile';
+import { UserBodySpecificationPage } from '../pages/user-body-specification/user-body-specification';
+import { EditbodyprofilePage } from '../pages/editbodyprofile/editbodyprofile';
+import { BmiPage } from '../pages/bmi/bmi';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    SignUpPage,
+    DashboardPage,
+    PopoverPage,
+    ProfilePage,
+    UserBodySpecificationPage,
+    EditbodyprofilePage,
+    BmiPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebase_config),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    SignUpPage,
+    DashboardPage,
+    PopoverPage,
+    ProfilePage,
+    UserBodySpecificationPage,
+    EditbodyprofilePage,
+    BmiPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DatabaseService
+    DatabaseService,
+    AuthService,
+    MessageService,
   ]
 })
 export class AppModule {}

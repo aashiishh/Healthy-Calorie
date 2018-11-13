@@ -1,0 +1,46 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Body Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding >
+<span *ngFor="let ubp of userPhyProfileList$ | async">
+
+<div *ngIf="authServ.getUID() == ubp.authKey">
+    <ion-list>
+    <ion-item *ngIf="ubp.gender=='m'">
+        <ion-label color="primary">Gender</ion-label>
+        <ion-input class="placeholder-color" placeholder="Male" [disabled]="true"></ion-input>
+     </ion-item>   
+     <ion-item *ngIf="ubp.gender=='f'">
+        <ion-label>Gender</ion-label>
+        <ion-input class="placeholder-color" placeholder="Female" [disabled]="true"></ion-input>
+     </ion-item>
+
+      <ion-item>
+          <ion-label color="primary">Age(in yrs)</ion-label>
+          <ion-input [(ngModel)]="ubp.age"></ion-input>
+        </ion-item> 
+
+  <ion-item>
+    <ion-label color="primary">Weight(in kgs)</ion-label>
+    <ion-input [(ngModel)]="ubp.weight"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary">Height(in meters)</ion-label>
+    <ion-input  [(ngModel)]="ubp.height"></ion-input>
+  </ion-item>
+
+  <button ion-button block outline color="danger" small style="text-transform:none;margin-top: 30px" (click)="updateProfile(ubp)">Save</button>
+
+</ion-list>
+
+</div>
+</span>
+
+</ion-content>

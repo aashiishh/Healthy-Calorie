@@ -1,0 +1,19 @@
+page-editbodyprofile {
+
+.placeholder-color{
+
+   :disabled::placeholder         // to change disabled placeholders color
+    {
+      color:green !important;
+      font-weight: bold;
+    }
+}
+
+// .class-name        to change placeholders color
+// {
+//     ::placeholder{
+//          color:red;
+//     }
+// }
+
+}

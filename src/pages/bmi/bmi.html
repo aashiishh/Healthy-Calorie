@@ -1,0 +1,34 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <div style="display:flex;">
+          <ion-title text-start>Body Mass Index</ion-title>
+          <ion-buttons text-end>
+            <button ion-button styl="text-transform: none" (click)="close()" icon-only large><ion-icon name="close-circle"></ion-icon></button>
+          </ion-buttons>
+      </div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <span *ngFor="let bpUser of userPhyProfileList$ | async">
+
+        <div *ngIf="authServ.getUID() == bpUser.authKey">
+
+            <div class="circle">
+                <div class="circle__inner">
+                  <div class="circle__wrapper">
+                    <div class="circle__content"><span style="font-size:40px;font-weight:30px"> BMI : <span style="font-family:'Times New Roman', Times, serif">{{bpUser.weight/((bpUser.height)*(bpUser.height)) | number:'1.0-0'}}</span> </span></div>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+          </span>
+
+
+</ion-content>

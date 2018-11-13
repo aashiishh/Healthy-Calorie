@@ -1,0 +1,43 @@
+<span *ngFor="let user of usersList$ | async">
+<ion-header>
+
+    <ion-navbar color="secondary">
+    <span style="display: flex">
+      <ion-title text-start>
+              <!-- <div *ngIf="authServ.getCurrentUser()"> -->
+              <span [hidden]="authServ.getCurrentUser().email != user.email">Welcome<span [hidden]="user.name"> Guest</span><span [hidden]="!user.name"> {{user.name}}</span></span>
+        <!-- <span [hidden]="!name">{{name}}</span> -->
+              <!-- </div> -->
+        </ion-title>
+      <ion-buttons text-end><button ion-button icon-only (click)="presentPopover($events)">
+        <ion-icon name="more"></ion-icon>
+      </button></ion-buttons>
+    </span>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding *ngIf="authServ.getCurrentUser().email == user.email">
+       
+       <div text-center>
+      <button [hidden]="!user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI()"><span>Show BMI </span></button>
+      <button [hidden]="user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button>
+       </div>
+
+
+
+
+  <div [hidden]="user.phyProfileExits" style="text-align:end !important; padding-right: 45px" >
+       <ion-fab class="bottom-item">
+        <button ion-fab mini color="secondary" (click)="gotoBodySpecAdd(user)"><ion-icon style="font-size:30px" name="add"></ion-icon></button>
+      </ion-fab>
+  </div>
+
+  <div [hidden]="!user.phyProfileExits" style="text-align:end !important; padding-right: 45px" >
+    <ion-fab class="bottom-item">
+     <button ion-fab mini color="secondary" (click)="gotoBodySpecEdit()"><ion-icon style="font-size:30px" name="clipboard"></ion-icon></button>
+   </ion-fab>
+</div>
+  </ion-content>
+</span>
