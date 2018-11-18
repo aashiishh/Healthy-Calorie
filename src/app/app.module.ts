@@ -21,6 +21,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { UserBodySpecificationPage } from '../pages/user-body-specification/user-body-specification';
 import { EditbodyprofilePage } from '../pages/editbodyprofile/editbodyprofile';
 import { BmiPage } from '../pages/bmi/bmi';
+import { APIService } from '../Services/API-Service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { BmiPage } from '../pages/bmi/bmi';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebase_config),
     AngularFireDatabaseModule,
@@ -63,6 +66,7 @@ import { BmiPage } from '../pages/bmi/bmi';
     DatabaseService,
     AuthService,
     MessageService,
+    APIService,
   ]
 })
 export class AppModule {}

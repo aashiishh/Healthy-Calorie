@@ -34,14 +34,15 @@ export class UserBodySpecificationPage {
   saveProfile(proData : PHY_Profile)
   {
     this.mesServ.showLoading('saving profile...');
+    // proData.bmi = (proData.weight/(proData.height*proData.height));
     this.phyProfileData.authKey = this.authServ.getUID();
     this.dbServ.addPhysicalProfile(proData).then(result => {
         if(result)
         {
           this.phyProfileData.gender = '';
-           this.phyProfileData.age = '';
-           this.phyProfileData.weight = '';
-           this.phyProfileData.height = ''; 
+           this.phyProfileData.age = undefined;
+           this.phyProfileData.weight = undefined;
+           this.phyProfileData.height = undefined; 
            this.user.phyProfileExits = true;
            this.dbServ.editUser(this.user);
           this.mesServ.loading.dismiss();

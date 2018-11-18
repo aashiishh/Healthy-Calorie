@@ -17,17 +17,17 @@
 
       <ion-item>
           <ion-label color="primary">Age</ion-label>
-          <ion-input placeholder="age in yr" [(ngModel)]="phyProfileData.age"></ion-input>
+          <ion-input type="number" placeholder="age in yr" [(ngModel)]="phyProfileData.age"></ion-input>
         </ion-item> 
 
   <ion-item>
     <ion-label color="primary">Weight</ion-label>
-    <ion-input placeholder="weight in kg" [(ngModel)]="phyProfileData.weight"></ion-input>
+    <ion-input type="number" placeholder="weight in kg" [(ngModel)]="phyProfileData.weight"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary">Height</ion-label>
-    <ion-input placeholder="height in meters"  [(ngModel)]="phyProfileData.height"></ion-input>
+    <ion-input type="number" placeholder="height in meters"  [(ngModel)]="phyProfileData.height"></ion-input>
   </ion-item>
 
   <button ion-button block outline color="danger" [disabled]="!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender" small style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>

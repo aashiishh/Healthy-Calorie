@@ -21,8 +21,18 @@
   <ion-content padding *ngIf="authServ.getCurrentUser().email == user.email">
        
        <div text-center>
-      <button [hidden]="!user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI()"><span>Show BMI </span></button>
-      <button [hidden]="user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button>
+         <div [hidden]="!user.phyProfileExits">
+            <span *ngFor="let bpUser of userPhyProfileList$ | async">
+                <div *ngIf="authServ.getUID() == bpUser.authKey">
+                  <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI(bpUser)"><span>Show BMI </span></button>
+                </div>
+              </span>
+         </div>
+         <div [hidden]="user.phyProfileExits">
+            <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button>
+         </div>
+      <!-- <button [hidden]="!user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI()"><span>Show BMI </span></button> -->
+      <!-- <button [hidden]="user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button> -->
        </div>
 
 

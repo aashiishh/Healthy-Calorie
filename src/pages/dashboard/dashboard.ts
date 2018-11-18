@@ -9,7 +9,7 @@ import { UserBodySpecificationPage } from '../user-body-specification/user-body-
 import { MessageService } from '../../Services/messageService';
 import { EditbodyprofilePage } from '../editbodyprofile/editbodyprofile';
 import { BmiPage } from '../bmi/bmi';
-
+import { PHY_Profile } from '../../models/phyProfile';
 
 @IonicPage()
 @Component({
@@ -26,9 +26,9 @@ export class DashboardPage {
     photoURL : '',
     phyProfileExits : false
  }
-
-usersList$: Observable<Credentials[]>; 
-  constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,private dbService: DatabaseService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController) {
+ userPhyProfileList$ : Observable<PHY_Profile[]>;
+ usersList$: Observable<Credentials[]>; 
+  constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,private dbService: DatabaseService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
     this.usersList$ = this.dbService
           .getUsersList()
           .snapshotChanges()
@@ -39,6 +39,12 @@ usersList$: Observable<Credentials[]>;
               }))
             }
           )
+          this.userPhyProfileList$ = this.dbServ.getUsersProfileList().snapshotChanges().map(changes => {
+            return changes.map(c => ({
+              key : c.payload.key, ...c.payload.val()
+            }))
+        })
+        console.log('body list-->',this.userPhyProfileList$)
   }
 
   ionViewDidLoad() {
@@ -72,9 +78,9 @@ usersList$: Observable<Credentials[]>;
       this.navCtrl.push(EditbodyprofilePage);
     }
 
-    showBMI()
+    showBMI(bpUser : PHY_Profile)
     {
-      const modal = this.modalCtrl.create(BmiPage);
+      const modal = this.modalCtrl.create(BmiPage,{profileData : bpUser});
       modal.present();
     }
   
