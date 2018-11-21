@@ -7,7 +7,7 @@
 
 </ion-header>
 
-<ion-content padding >
+<ion-content padding *ngIf="currentUser">
 <span *ngFor="let ubp of userPhyProfileList$ | async">
 
 <div *ngIf="authServ.getUID() == ubp.authKey">
@@ -23,20 +23,40 @@
 
       <ion-item>
           <ion-label color="primary">Age(in yrs)</ion-label>
-          <ion-input [(ngModel)]="ubp.age"></ion-input>
+          <ion-input type="number" placeholder="{{ubp.age}}" [(ngModel)]="proData.age"></ion-input>
         </ion-item> 
 
   <ion-item>
     <ion-label color="primary">Weight(in kgs)</ion-label>
-    <ion-input [(ngModel)]="ubp.weight"></ion-input>
+    <ion-input type="number" placeholder="{{ubp.weight}}" [(ngModel)]="proData.weight"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary">Height(in meters)</ion-label>
-    <ion-input  [(ngModel)]="ubp.height"></ion-input>
+    <ion-input type="number" placeholder="{{ubp.height}}" [(ngModel)]="proData.height"></ion-input>
   </ion-item>
 
-  <button ion-button block outline color="danger" small style="text-transform:none;margin-top: 30px" (click)="updateProfile(ubp)">Save</button>
+  <ion-item>
+      <ion-label>How active are you?</ion-label>
+      <ion-select [(ngModel)]="ubp.aFactor" interface="popover">
+          <ion-option value="s">sedentary(no activity)</ion-option>
+        <ion-option value="l">light(1-2 days/week)</ion-option>
+        <ion-option value="m">moderate(3-5 days/week)</ion-option>
+        <ion-option value="v">very active(daily)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>I want to</ion-label>
+        <ion-select [(ngModel)]="ubp.mode" interface="popover">
+            <ion-option value="lw"> loose weight</ion-option>
+          <ion-option value="mw"> maintain weight</ion-option>
+          <ion-option value="gw"> gain weight</ion-option>
+        </ion-select>
+      </ion-item>
+
+  <button ion-button block outline color="danger" [disabled]="ubp.age==this.proData.age && ubp.height==this.proData.height && ubp.weight==this.proData.weight" small style="text-transform:none;margin-top: 30px" (click)="editPHYProfile(ubp)">Save</button>
+
 
 </ion-list>
 

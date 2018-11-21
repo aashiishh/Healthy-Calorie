@@ -30,7 +30,28 @@
     <ion-input type="number" placeholder="height in meters"  [(ngModel)]="phyProfileData.height"></ion-input>
   </ion-item>
 
-  <button ion-button block outline color="danger" [disabled]="!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender" small style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>
+  <ion-item>
+      <ion-label>How active are you?</ion-label>
+      <ion-select [(ngModel)]="phyProfileData.aFactor" interface="popover">
+          <ion-option value="s">sedentary(no activity)</ion-option>
+        <ion-option value="l">light(1-2 days/week)</ion-option>
+        <ion-option value="m">moderate(3-5 days/week)</ion-option>
+        <ion-option value="v">very active(daily)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>I want to</ion-label>
+        <ion-select [(ngModel)]="phyProfileData.mode" interface="popover">
+            <ion-option value="lw"> loose weight</ion-option>
+          <ion-option value="mw"> maintain weight</ion-option>
+          <ion-option value="gw"> gain weight</ion-option>
+        </ion-select>
+      </ion-item>
+   
+
+
+  <button ion-button block outline color="danger" [disabled]="!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender || !phyProfileData.aFactor || !phyProfileData.mode" small style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>
 
 </ion-list>
 

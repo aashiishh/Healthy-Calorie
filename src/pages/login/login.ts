@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Credentials } from '../../models/userCred';
 import { DashboardPage } from '../dashboard/dashboard';
 import { MessageService } from '../../Services/messageService';
@@ -21,13 +21,57 @@ export class LoginPage {
         photoURL : '' ,
         phyProfileExits : false
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mesServ: MessageService,public authService:AuthService) {
-    this.user.email = 'ashmaxwell4@gmail.com';
+  constructor(public alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams, public mesServ: MessageService,public authService:AuthService) {
+    this.user.email = 'abhi6307@gmail.com';
     this.user.password ='123123';
 }
 
 ionViewDidLoad() {
   console.log('ionViewDidLoad LoginPage');
+}
+
+forPass()
+{
+  let alert = this.alertCtrl.create({
+    title: 'Change Password',
+    inputs: [
+      {
+        name: 'email',
+        placeholder: 'enter your email'
+      },
+   /*   {
+        name: 'password',
+        placeholder: 'Password',
+        type: 'password'
+      }*/
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+         this.mesServ.presentToast("change password request cancelled.")
+        }
+      },
+      {
+        text: 'Send',
+        handler: data => {
+
+        this.authService.sendPasswordResetLink(data.email).then(result => {
+          if(result)
+          this.mesServ.presentToast("Reset password link has been sent on your email address")
+          else
+          {
+            this.mesServ.showAlert("oop!","entered email address is not registered")
+            console.log(result);
+          }
+        });
+        
+        }
+      }
+    ]
+  });
+  alert.present();
 }
 
 async login(user: Credentials){

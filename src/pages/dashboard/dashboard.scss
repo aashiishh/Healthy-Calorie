@@ -48,4 +48,23 @@ page-dashboard {
             right: 0;
           }     
 
+
+          .button-lfg {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 17px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            border: 7px solid white;
+            box-shadow: 0 4px #131616;
+          }
+          
+         // .button-lfg:hover {}
+          
+          .button-lfg:active {
+            box-shadow: 0 2px rgb(252, 252, 252);
+            transform: translateY(4px);
+          }
 }

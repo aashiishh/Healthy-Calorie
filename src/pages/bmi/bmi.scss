@@ -80,6 +80,31 @@ page-bmi {
       font-size: 4em;
     }
   }
+  
+   .r1
+  {
+    border-width: 0px 5px;
+    border-color:  black;
+    border-style: solid;
+    padding: 0px !important;
+  }
+   .r2
+  {
+    border: 5px black solid;
+    padding: 0px !important;
+  }
 
 
+  .c1
+ {
+   border: 4px rgb(13, 241, 89) solid;
+ }
+  .c2
+ {
+   border: 4px rgb(223, 33, 74) solid;
+ }
+  .c3
+ {
+   border: 4px rgb(10, 122, 226) solid;
+ }
 }

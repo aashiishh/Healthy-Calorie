@@ -14,27 +14,55 @@
 
 
 <ion-content padding>
-<!-- 
-    <span *ngFor="let bpUser of userPhyProfileList$ | async">
+
+    <!-- <span *ngFor="let bpUser of userPhyProfileList$ | async">
 
         <div *ngIf="authServ.getUID() == bpUser.authKey"> -->
 
             <div class="circle">
                 <div class="circle__inner">
                   <div class="circle__wrapper">
-                    <!-- <div class="circle__content"><span style="font-size:40px;font-weight:30px"> BMI : <span style="font-family:'Times New Roman', Times, serif">{{bpUser.bmi | number:'1.0-0'}}</span> <span style="font-family:'Times New Roman', Times, serif">{{bpUser.weight/((bpUser.height)*(bpUser.height)) | number:'1.0-0'}}</span> </span></div> -->
-                    <div class="circle__content">
-                    <span style="font-size:40px;font-weight:30px">BMI : {{dataOfBMI.value}}</span><br>
+                    <div class="circle__content">  
+                      <span style="font-size:70px;font-weight:30px;color: white"> BMI : <span style="font-family:'Times New Roman', Times, serif">{{bpUser.bmi | number:'1.0-0'}}</span> <!--<span style="font-family:'Times New Roman', Times, serif">{{bpUser.weight/((bpUser.height)*(bpUser.height)) | number:'1.0-0'}}</span> --> </span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <ul>
-                <li><span style="font-size:20px;font-weight:30px">Status : {{dataOfBMI.status}}</span><br></li>
-                 <li><span style="font-size:20px;font-weight:30px">Risk : {{dataOfBMI.risk}}</span><br></li>
-                 <li> <span style="font-size:20px;font-weight:30px">Ideal Weight : {{dataOfBMI.ideal_weight}}</span><br></li>
-              </ul>
-        <!-- </div>
+              <ion-grid class="grid-border">
+                  <span style="font-size:20px;font-weight:30px">
+                  <ion-row class="r2">
+                    <ion-col class="c1">
+                        Status
+                    </ion-col>
+                    <ion-col class="c1">
+                        {{bpUser.status}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="r1">
+                    <ion-col class="c2">
+                        Risk
+                    </ion-col>
+                    <ion-col class="c2">
+                        {{bpUser.risk}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="r2">
+                    <ion-col class="c3">
+                        Ideal Weight
+                    </ion-col>
+                    <ion-col class="c3">
+                        {{bpUser.ideal_weight}}
+                    </ion-col>
+                  </ion-row>
+                  </span>
+                </ion-grid>
+
+              <!-- <ul>
+                <li><span style="font-size:20px;font-weight:30px">Status : {{bpUser.status}}</span><br></li>
+                 <li><span style="font-size:20px;font-weight:30px">Risk : {{bpUser.risk}}</span><br></li>
+                 <li> <span style="font-size:20px;font-weight:30px">Ideal Weight : {{bpUser.ideal_weight}}</span><br></li>
+              </ul> -->
+         <!-- </div>
           </span> -->
 </ion-content>

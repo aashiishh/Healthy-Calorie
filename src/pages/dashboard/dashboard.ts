@@ -26,9 +26,11 @@ export class DashboardPage {
     photoURL : '',
     phyProfileExits : false
  }
+ currentUser : any;
  userPhyProfileList$ : Observable<PHY_Profile[]>;
  usersList$: Observable<Credentials[]>; 
   constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,private dbService: DatabaseService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
+    this.currentUser= this.authServ.getCurrentUser();
     this.usersList$ = this.dbService
           .getUsersList()
           .snapshotChanges()
@@ -50,6 +52,7 @@ export class DashboardPage {
   ionViewDidLoad() {
   
      console.log('ionViewDidLoad Dashboard');
+     
    
     }
    

@@ -18,9 +18,9 @@
        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
   </ion-list>
-  <div text-center >
-  <button ion-button [disabled]="!user.email || !user.password" color="danger" (click)="login(user)">Sign In</button>
-  <!-- <button ion-button color="danger" (click)="pop()">Back</button> -->
+  <div text-center>
+  <button ion-button [disabled]="!user.email || !user.password" color="secondary" (click)="login(user)">Sign In</button><br>
+   <button ion-button color="danger" style="text-transform:none" clear (click)="forPass()"><u>forget password?</u></button> 
   </div>
 
 </ion-content>

@@ -33,12 +33,13 @@ export class PopoverPage {
   }
 
   async goToLoginPage(){
-    this.close();
+    
     this.mesgService.showLoading('logging out...');
      this.authService.logout().then(re => {
               if(re == 1)
+              {   
               this.navCtrl.setRoot(HomePage);
-              else
+              }else
               {
               this.mesgService.loading.dismissAll();
               this.mesgService.presentToast('Something went wrong');

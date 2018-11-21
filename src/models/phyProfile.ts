@@ -6,4 +6,11 @@ export interface PHY_Profile
     age : number;
     weight : number;
     height : number;
+    aFactor : string;
+    bmi? : number;
+    sCalories? : number;
+    mode : string;
+    risk?: string;
+    ideal_weight? : string;
+    status? : string;
 }

@@ -4,6 +4,7 @@ import { Credentials } from '../../models/userCred';
 import { AuthService } from '../../Services/authService';
 import { MessageService } from '../../Services/messageService';
 import { DatabaseService } from '../../Services/databaseService';
+import { LoginPage } from '../login/login';
 
 
 
@@ -28,6 +29,11 @@ export class SignUpPage {
 
   ionViewDidLoad() {
     
+  }
+
+  goToLogin()
+  {
+    this.navCtrl.push(LoginPage);
   }
 
   async signUp(localUser : Credentials)

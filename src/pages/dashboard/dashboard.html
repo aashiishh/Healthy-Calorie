@@ -4,10 +4,10 @@
     <ion-navbar color="secondary">
     <span style="display: flex">
       <ion-title text-start>
-              <!-- <div *ngIf="authServ.getCurrentUser()"> -->
-              <span [hidden]="authServ.getCurrentUser().email != user.email">Welcome<span [hidden]="user.name"> Guest</span><span [hidden]="!user.name"> {{user.name}}</span></span>
+               <div *ngIf="currentUser"> 
+              <span [hidden]="currentUser.email != user.email">Welcome<span [hidden]="user.name"> Guest</span><span [hidden]="!user.name"> {{user.name}}</span></span>
         <!-- <span [hidden]="!name">{{name}}</span> -->
-              <!-- </div> -->
+               </div>
         </ion-title>
       <ion-buttons text-end><button ion-button icon-only (click)="presentPopover($events)">
         <ion-icon name="more"></ion-icon>
@@ -17,20 +17,28 @@
   
   </ion-header>
   
-  
-  <ion-content padding *ngIf="authServ.getCurrentUser().email == user.email">
+  <!-- <span *ngIf="currentUser && currentUser.uid"> -->
+  <ion-content padding *ngIf="currentUser.email == user.email">
        
-       <div text-center>
+       <div style="margin-top:50px" text-center>
          <div [hidden]="!user.phyProfileExits">
             <span *ngFor="let bpUser of userPhyProfileList$ | async">
-                <div *ngIf="authServ.getUID() == bpUser.authKey">
-                  <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI(bpUser)"><span>Show BMI </span></button>
-                </div>
+                <span *ngIf="currentUser.uid == bpUser.authKey">
+                  <!-- <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI(bpUser)"><span>Show BMI </span></button> -->
+                  <button class="button-lfg" ion-button block large round ion-left color="danger" (click)="showBMI(bpUser)" style="height:100px !important" icon-left >
+                    <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+                    <div id="div1" style="font-size:40px;font-weight:800">Show BMI</div>
+                  </button> 
+                </span>
               </span>
          </div>
          <div [hidden]="user.phyProfileExits">
-            <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button>
-         </div>
+            <!-- <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button> -->
+            <button class="button-lfg" ion-button block large round ion-left color="danger" (click)="showNoProfileExist(user)" style="height:100px !important" icon-left >
+              <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+              <div id="div1" style="font-size:40px;font-weight:800">Show BMI</div>
+            </button> 
+          </div>
       <!-- <button [hidden]="!user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI()"><span>Show BMI </span></button> -->
       <!-- <button [hidden]="user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button> -->
        </div>
@@ -49,5 +57,15 @@
      <button ion-fab mini color="secondary" (click)="gotoBodySpecEdit()"><ion-icon style="font-size:30px" name="clipboard"></ion-icon></button>
    </ion-fab>
 </div>
+
+<button class="button-lfg" ion-button block large round ion-left color="dark" style="height:100px !important" icon-left >
+  <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+  <div id="div1" style="font-size:40px;font-weight:800">Select Meal</div>
+</button>
+<button class="button-lfg" ion-button large block round ion-left color="fanta"  style="height:100px" icon-left >
+    <!-- <ion-icon name="logo-google"></ion-icon> -->
+    <div id="div1" style="font-size:40px;font-weight:800">My Calories</div>
+  </button>  
+
   </ion-content>
 </span>

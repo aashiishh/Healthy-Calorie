@@ -153,13 +153,15 @@ export class AuthService {
         if(this.fUser)
         return this.afauth.auth.currentUser.uid;
         else
-        console.log('no user is logged in');
+        return null;
   }
 
   getCurrentUser()
   {
       if(this.fUser)
       return this.afauth.auth.currentUser;
+      else
+      return null;
   }
 
   updateEmail(email : string)
@@ -208,6 +210,13 @@ export class AuthService {
       }
     })
     
+ }
+
+sendPasswordResetLink(email : string)
+ {  
+   return new Promise<boolean>(async (resolve,reject) => {
+    this.afauth.auth.sendPasswordResetEmail(email).then(() => resolve(true)).catch(() => resolve(false))
+   })      
  }
 
  logout()

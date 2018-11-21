@@ -53,4 +53,15 @@ export class DatabaseService
             })
         })
     }
+
+    editPhysicalProfile(editPHYProfileData : PHY_Profile)
+    {
+        return new Promise<boolean>((resolve,reject) => {
+            this.usersPhysicalProfileListRef.update(editPHYProfileData.key,editPHYProfileData).then(() => {
+                resolve(true);
+            }).catch(() => {
+                resolve(false);
+            })
+        })
+    }
 }
