@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>Login</ion-title>
   </ion-navbar>
 
@@ -10,16 +10,16 @@
 <ion-content padding>
   <ion-list class="input-border">
     <ion-item >
-      <ion-label floating>email</ion-label>
+      <ion-label floating color="secondary">email</ion-label>
       <ion-input type="text" [(ngModel)]="user.email"></ion-input>
     </ion-item>
     <ion-item>
-       <ion-label floating>password</ion-label> 
+       <ion-label floating color="secondary">password</ion-label> 
        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
   </ion-list>
   <div text-center>
-  <button ion-button [disabled]="!user.email || !user.password" color="secondary" (click)="login(user)">Sign In</button><br>
+  <button ion-button [disabled]="!user.email || !user.password" color="secondary" (click)="login(user)" style="text-transform:none">Login</button><br>
    <button ion-button color="danger" style="text-transform:none" clear (click)="forPass()"><u>forget password?</u></button> 
   </div>
 

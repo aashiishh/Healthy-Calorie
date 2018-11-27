@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>Edit Body Profile</ion-title>
   </ion-navbar>
 
@@ -37,25 +37,25 @@
   </ion-item>
 
   <ion-item>
-      <ion-label>How active are you?</ion-label>
-      <ion-select [(ngModel)]="ubp.aFactor" interface="popover">
-          <ion-option value="s">sedentary(no activity)</ion-option>
-        <ion-option value="l">light(1-2 days/week)</ion-option>
-        <ion-option value="m">moderate(3-5 days/week)</ion-option>
-        <ion-option value="v">very active(daily)</ion-option>
+      <ion-label color="primary">How active are you?</ion-label>
+      <ion-select placeholder="{{ubp.aFactor}}" [(ngModel)]="proData.aFactor" interface="popover">
+          <ion-option value="sedentary">sedentary(no activity)</ion-option>
+        <ion-option value="light">light(1-2 days/week)</ion-option>
+        <ion-option value="moderate">moderate(3-5 days/week)</ion-option>
+        <ion-option value="very active">very active(daily)</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-        <ion-label>I want to</ion-label>
-        <ion-select [(ngModel)]="ubp.mode" interface="popover">
-            <ion-option value="lw"> loose weight</ion-option>
-          <ion-option value="mw"> maintain weight</ion-option>
-          <ion-option value="gw"> gain weight</ion-option>
+        <ion-label color="primary">I want to</ion-label>
+        <ion-select placeholder="{{ubp.mode}}" [(ngModel)]="proData.mode" interface="popover">
+            <ion-option value="loose weight"> loose weight</ion-option>
+          <ion-option value="maintain weight"> maintain weight</ion-option>
+          <ion-option value="gain weight"> gain weight</ion-option>
         </ion-select>
       </ion-item>
 
-  <button ion-button block outline color="danger" [disabled]="ubp.age==this.proData.age && ubp.height==this.proData.height && ubp.weight==this.proData.weight" small style="text-transform:none;margin-top: 30px" (click)="editPHYProfile(ubp)">Save</button>
+  <button ion-button block color="primary" style="text-transform:none;margin-top: 30px" (click)="editPHYProfile(ubp)">Save</button>
 
 
 </ion-list>

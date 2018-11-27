@@ -130,9 +130,11 @@ this.viewCtrl.dismiss();
                   this.authServ.logout().then(result => {
                        if(result == 1)
                        {
-                        this.navCtrl.setRoot(LoginPage);
-                        this.mesService.showAlert('Success!!','Your profile is updated, please login with the new email');
-                       }
+                        this.navCtrl.setRoot(LoginPage).then(() => 
+                        {
+                           this.mesService.showAlert('Success!!','Your profile is updated, please login with the new email');
+                        }); 
+                      }
                   })
                 }
             })

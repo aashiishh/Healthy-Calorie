@@ -74,17 +74,20 @@ export class UserBodySpecificationPage {
   {
     return new Promise((resolve,reject) => {
 
-       this.BMI_API.getBMIResult(proData).then(result => {
-        if(result == 0)
+            // this.BMI_API.sendPostRequest(proData);
+            // resolve(false);
+       this.BMI_API.sendPostRequest(proData).then(result => {
+        if(!result)
           resolve(false);
         else
         {
           this.BMIresult = result;
           this.phyProfileData.risk=this.BMIresult.bmi.risk
+          this.phyProfileData.bmr = this.BMIresult.bmr.value;
           this.phyProfileData.status = this.BMIresult.bmi.status;
           this.phyProfileData.ideal_weight = this.BMIresult.ideal_weight;
           this.phyProfileData.bmi = this.BMIresult.bmi.value;
-          this.phyProfileData.sCalories = ((this.BMIresult.bmr.value)*this.getSLMV(this.phyProfileData.aFactor))+this.getMode(this.phyProfileData.mode);
+          this.phyProfileData.sCalories = ((this.phyProfileData.bmr)*this.getSLMV(this.phyProfileData.aFactor))+this.getMode(this.phyProfileData.mode);
           console.log('Suggested Calories are =>',this.phyProfileData.sCalories);
           resolve(true);
         }
@@ -98,11 +101,11 @@ export class UserBodySpecificationPage {
   
   getSLMV(slmv : string) : number
   {
-      if(slmv == 's')
+      if(slmv == 'sedentary')
       return 1.2;
-      else if(slmv == 'l')
+      else if(slmv == 'light')
       return 1.375;
-      else if(slmv == 'm')
+      else if(slmv == 'moderate')
       return 1.55;
       else
       return 1.725;
@@ -110,14 +113,12 @@ export class UserBodySpecificationPage {
 
   getMode(mode : string) : number
   {
-      if(mode == 'lw')
+      if(mode == 'loose weight')
       return -500;
-      else if(mode == 'mw')
+      else if(mode == 'maintain weight')
       return 0;
       else
       return 500;
   }
-
-
 
 }

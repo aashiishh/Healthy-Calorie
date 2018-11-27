@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
       <div style="display:flex;">
           <ion-title text-start>Body Mass Index</ion-title>
           <ion-buttons text-end>
@@ -17,22 +17,27 @@
 
     <!-- <span *ngFor="let bpUser of userPhyProfileList$ | async">
 
-        <div *ngIf="authServ.getUID() == bpUser.authKey"> -->
+        <div *ngIf="authServ.getUID() == bpUser.authKey"> -->  
 
-            <div class="circle">
+            <!-- <div class="circle">
                 <div class="circle__inner">
                   <div class="circle__wrapper">
                     <div class="circle__content">  
-                      <span style="font-size:70px;font-weight:30px;color: white"> BMI : <span style="font-family:'Times New Roman', Times, serif">{{bpUser.bmi | number:'1.0-0'}}</span> <!--<span style="font-family:'Times New Roman', Times, serif">{{bpUser.weight/((bpUser.height)*(bpUser.height)) | number:'1.0-0'}}</span> --> </span>
+                      <span style="font-size:70px;font-weight:30px;color: white"> BMI : <span style="font-family:'Times New Roman', Times, serif">{{bpUser.bmi | number:'1.0-0'}}</span> <!--<span style="font-family:'Times New Roman', Times, serif">{{bpUser.weight/((bpUser.height)*(bpUser.height)) | number:'1.0-0'}}</span> -- </span>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
+              <ion-row justify-content-center> 
+              <div class="circle-text" style="padding-top:130px">  
+                    <span style="font-size:50px;font-weight:bold;color: white"> BMI : <span style="font-family:'Times New Roman', Times, serif">{{bpUser.bmi | number:'1.1-2'}}</span> <!--<span style="font-family:'Times New Roman', Times, serif">{{bpUser.weight/((bpUser.height)*(bpUser.height)) | number:'1.0-0'}}</span> --> </span>
+                  </div>
+              </ion-row>
 
               <ion-grid class="grid-border">
                   <span style="font-size:20px;font-weight:30px">
                   <ion-row class="r2">
-                    <ion-col class="c1">
+                    <ion-col class="c1" text-center>
                         Status
                     </ion-col>
                     <ion-col class="c1">
@@ -40,7 +45,7 @@
                     </ion-col>
                   </ion-row>
                   <ion-row class="r1">
-                    <ion-col class="c2">
+                    <ion-col class="c2" text-center>
                         Risk
                     </ion-col>
                     <ion-col class="c2">
@@ -48,7 +53,7 @@
                     </ion-col>
                   </ion-row>
                   <ion-row class="r2">
-                    <ion-col class="c3">
+                    <ion-col class="c3" text-center>
                         Ideal Weight
                     </ion-col>
                     <ion-col class="c3">

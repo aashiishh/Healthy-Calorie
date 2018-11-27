@@ -10,6 +10,7 @@ import { MessageService } from '../../Services/messageService';
 import { EditbodyprofilePage } from '../editbodyprofile/editbodyprofile';
 import { BmiPage } from '../bmi/bmi';
 import { PHY_Profile } from '../../models/phyProfile';
+import { ViewCaloriesPage } from '../view-calories/view-calories';
 
 @IonicPage()
 @Component({
@@ -29,6 +30,7 @@ export class DashboardPage {
  currentUser : any;
  userPhyProfileList$ : Observable<PHY_Profile[]>;
  usersList$: Observable<Credentials[]>; 
+//  bodyProfileData = {} as PHY_Profile;
   constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,private dbService: DatabaseService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
     this.currentUser= this.authServ.getCurrentUser();
     this.usersList$ = this.dbService
@@ -58,7 +60,7 @@ export class DashboardPage {
    
     showNoProfileExist(user : Credentials)
     {
-      this.mesServ.showAlert('oops!','Body specification has not been updated, please update your body profile').onDidDismiss(() => {
+      this.mesServ.showAlert('oops!','Your body profile is not completed, please update your body profile first').onDidDismiss(() => {
         this.navCtrl.push(UserBodySpecificationPage,{currentUser: user});
       })
     }
@@ -87,5 +89,10 @@ export class DashboardPage {
       modal.present();
     }
   
+    viewCalories(bodyProfileData : PHY_Profile )
+    {
+      const modal = this.modalCtrl.create(ViewCaloriesPage,{profileData : bodyProfileData});
+      modal.present(); 
+    }
 
 }

@@ -23,6 +23,7 @@ import { EditbodyprofilePage } from '../pages/editbodyprofile/editbodyprofile';
 import { BmiPage } from '../pages/bmi/bmi';
 import { APIService } from '../Services/API-Service';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewCaloriesPage } from '../pages/view-calories/view-calories';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfilePage,
     UserBodySpecificationPage,
     EditbodyprofilePage,
-    BmiPage
+    BmiPage,
+    ViewCaloriesPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfilePage,
     UserBodySpecificationPage,
     EditbodyprofilePage,
-    BmiPage
+    BmiPage,
+    ViewCaloriesPage
   ],
   providers: [
     StatusBar,

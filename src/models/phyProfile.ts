@@ -13,4 +13,5 @@ export interface PHY_Profile
     risk?: string;
     ideal_weight? : string;
     status? : string;
+    bmr? : number;
 }
