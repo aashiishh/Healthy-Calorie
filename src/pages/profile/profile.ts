@@ -40,7 +40,7 @@ export class ProfilePage {
   }
 
 ionViewDidLoad() {
- // this.imgsrc = "http://downloadicons.net/sites/default/files/contacts-icon-64397.png";
+ this.imgsrc = "http://downloadicons.net/sites/default/files/contacts-icon-64397.png";
 }
 
 close() {

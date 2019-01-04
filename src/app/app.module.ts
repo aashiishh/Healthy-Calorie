@@ -24,6 +24,14 @@ import { BmiPage } from '../pages/bmi/bmi';
 import { APIService } from '../Services/API-Service';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewCaloriesPage } from '../pages/view-calories/view-calories';
+import { FoodModalPage } from '../pages/food-modal/food-modal';
+import { CosumedMealListPage } from '../pages/cosumed-meal-list/cosumed-meal-list';
+import { MealTypeSelectionPage } from '../pages/meal-type-selection/meal-type-selection';
+import { BreakfastSelectionPage } from '../pages/breakfast-selection/breakfast-selection';
+import { LunchDinnerSelectionPage } from '../pages/lunch-dinner-selection/lunch-dinner-selection';
+import { SnacksSelectionPage } from '../pages/snacks-selection/snacks-selection';
+// import { ImagePicker } from '@ionic-native/image-picker';
+// import { Base64 } from '@ionic-native/base64';
 
 
 @NgModule({
@@ -38,7 +46,13 @@ import { ViewCaloriesPage } from '../pages/view-calories/view-calories';
     UserBodySpecificationPage,
     EditbodyprofilePage,
     BmiPage,
-    ViewCaloriesPage
+    ViewCaloriesPage,
+    FoodModalPage,
+    CosumedMealListPage,
+    MealTypeSelectionPage,
+    BreakfastSelectionPage,
+    LunchDinnerSelectionPage,
+    SnacksSelectionPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +74,13 @@ import { ViewCaloriesPage } from '../pages/view-calories/view-calories';
     UserBodySpecificationPage,
     EditbodyprofilePage,
     BmiPage,
-    ViewCaloriesPage
+    ViewCaloriesPage,
+    FoodModalPage,
+    CosumedMealListPage,
+    MealTypeSelectionPage,
+    BreakfastSelectionPage,
+    LunchDinnerSelectionPage,
+    SnacksSelectionPage
   ],
   providers: [
     StatusBar,
@@ -70,6 +90,8 @@ import { ViewCaloriesPage } from '../pages/view-calories/view-calories';
     AuthService,
     MessageService,
     APIService,
+    // ImagePicker,
+    // Base64,
   ]
 })
 export class AppModule {}

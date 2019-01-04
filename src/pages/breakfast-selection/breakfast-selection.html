@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="meal">
+      <ion-title text-center>Breakfast</ion-title>
+    <!-- <div style="display:flex">
+    <ion-title >BreakFast</ion-title>
+    <ion-buttons text-end>
+      <button ion-button styl="text-transform: none" (click)="viewList()" icon-only > <ion-icon name="eye"></ion-icon></button>
+    </ion-buttons>
+  </div> -->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <ion-row>
+      <ion-col text-center no-padding>
+          <img class="circle-pic" src="../../assets/imgs/omelette.png">
+      </ion-col>
+      <ion-col col-9 no-padding>
+        <ion-row text-start style="background:rgb(7, 166, 230);"><ion-col text-center><h6 style="color:white;margin: 0px">Maximum Calories intake for Breakfast</h6></ion-col></ion-row>
+        <ion-row  style="background:rgb(0, 3, 0);color:white;"><ion-col text-center><h2 style="color:white;margin: 0px">{{bCals | number:'1.1-2'}}</h2></ion-col></ion-row> 
+      </ion-col>
+    </ion-row>
+        <ion-list>
+        <!-- <ion-list-header class="my-head">
+          <ion-row><ion-col style="line-height:35px"><u>Breakfast</u></ion-col> <ion-col text-end> <button ion-button small>Reset</button></ion-col></ion-row>
+        </ion-list-header> -->
+        <button ion-item class="my-button" *ngFor="let food of foodListForBreakfast$ | async" (click)="itemSelected(food)">
+          {{ food.name }}
+        </button>
+      </ion-list>
+
+</ion-content>

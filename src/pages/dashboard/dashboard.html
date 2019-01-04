@@ -3,7 +3,7 @@
 
     <ion-navbar color="secondary">
     <span style="display: flex">
-      <ion-title text-start>
+      <ion-title text-center>
               My Dashboard
                <!-- <div *ngIf="currentUser"> 
               <span [hidden]="currentUser.email != user.email">Welcome<span [hidden]="user.name"> Guest</span><span [hidden]="!user.name"> {{user.name}}</span></span>
@@ -18,31 +18,63 @@
   </ion-header>
 
   <span *ngFor="let user of usersList$ | async">
-  <ion-content padding *ngIf="currentUser.email == user.email">
+  <ion-content no-padding *ngIf="currentUser.email == user.email">
        
-       <div style="margin-top:100px" text-center>
+       <div style="margin-top:56px" text-center>
 
          <div [hidden]="!user.phyProfileExits">
             <span *ngFor="let bpUser of userPhyProfileList$ | async">
                 <span *ngIf="currentUser.uid == bpUser.authKey">
                   <!-- <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI(bpUser)"><span>Show BMI </span></button> -->
-                  <button class="button-lfg" ion-button block large round ion-left color="danger" (click)="showBMI(bpUser)" style="height:80px !important" icon-left >
+                  <!-- Uncomment from here
+                     <button class="button-lfg" ion-button block large round ion-left color="danger" (click)="showBMI(bpUser)" style="height:80px !important" icon-left >
                     <div id="div1" style="font-size:25px;font-weight:500">Show BMI</div>
-                  </button> 
+                  </button>
 
                   <div style="margin-top:30px">     
-                      <button class="button-lfg" ion-button block large round ion-left color="dark" style="height:80px !important" icon-left >
-                        <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+                      <button class="button-lfg" ion-button block large round ion-left color="meal" style="height:80px !important " icon-left (click)="gotoMealSelection()">
                         <div id="div1" style="font-size:25px;font-weight:500">Select Meal</div>
                       </button>
                       </div>
 
+                      <div style="margin-top:30px">
+                          <button class="button-lfg" ion-button large block round ion-left color="consumption"  style="height:80px" icon-left (click)="viewConsumption()">
+                              <div id="div1" style="font-size:25px;font-weight:500">My Consumption</div>
+                            </button>  
+                          </div>
+
                   <div style="margin-top:30px">
-                      <button class="button-lfg" ion-button large block round ion-left color="fanta"  style="height:80px" icon-left (click)="viewCalories(bpUser)">
-                          <!-- <ion-icon name="logo-google"></ion-icon> -->
+                      <button class="button-lfg" ion-button large block round ion-left color="calories"  style="height:80px" icon-left (click)="viewCalories(bpUser)">
                           <div id="div1" style="font-size:25px;font-weight:500">My Calories</div>
                         </button>  
-                      </div>
+                      </div>   
+                       to here -->
+                       <ion-grid class="gg">
+                        <ion-row>
+                          <ion-col>
+                           <button ion-button class="square" color="ldanger" (click)="showBMI(bpUser)">BMI</button>
+                          </ion-col>
+                          <ion-col>
+                              <button ion-button class="square" color="lcalories" (click)="viewCalories(bpUser)">Calories</button>
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="top-bot-mar">
+                            <button ion-button class="square" color="lmeal" (click)="gotoMealSelection(bpUser)">Select Meal</button>
+                          </ion-col>
+                          <ion-col class="top-bot-mar">
+                            <button ion-button class="square" color="lconsumption" (click)="viewConsumption()">Consumption</button>
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                              <button ion-button class="square" color="lsecondary" (click)="gotoBodySpecEdit()">Body profile</button>
+                            </ion-col>
+                            <ion-col>
+                              <button ion-button class="square" color="pinkk" (click)="gotoAbout()">About</button>
+                            </ion-col>
+                          </ion-row>
+                      </ion-grid>
                 </span>
               </span>
          </div>
@@ -51,41 +83,76 @@
          <!-- for no body profile -->
          <div [hidden]="user.phyProfileExits">
             <!-- <button class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button> -->
-            <button class="button-lfg" ion-button block large round ion-left color="danger" (click)="showNoProfileExist(user)" style="height:80px !important" icon-left >
-              <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+           <!-- <button class="button-lfg" ion-button block large round ion-left color="danger" (click)="showNoProfileExist(user)" style="height:80px !important" icon-left >
+              
               <div id="div1" style="font-size:25px;font-weight:500">Show BMI</div>
             </button>
 
               <div style="margin-top:30px">     
-                  <button class="button-lfg" ion-button block large round ion-left color="dark" style="height:80px !important" icon-left (click)="showNoProfileExist(user)">
-                    <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+                  <button class="button-lfg" ion-button block large round ion-left color="meal" style="height:80px !important" icon-left (click)="showNoProfileExist(user)">
                     <div id="div1" style="font-size:25px;font-weight:500">Select Meal</div>
                   </button>
               </div>
 
               <div style="margin-top:30px">
-                  <button class="button-lfg" ion-button large block round ion-left color="fanta"  style="height:80px" icon-left (click)="showNoProfileExist(user)">
-                      <!-- <ion-icon name="logo-google"></ion-icon> -->
+                  <button class="button-lfg" ion-button large block round ion-left color="consumption"   style="height:80px" icon-left (click)="showNoProfileExist(user)">
+                      <div id="div1" style="font-size:25px;font-weight:500">My Consumption</div>
+                    </button>  
+              </div> 
+
+              <div style="margin-top:30px">
+                  <button class="button-lfg" ion-button large block round ion-left color="calories"  style="height:80px" icon-left (click)="showNoProfileExist(user)">
                       <div id="div1" style="font-size:25px;font-weight:500">My Calories</div>
                     </button>  
-              </div>  
-          </div>
+              </div> --> 
+
+              <ion-grid class="gg">
+                  <ion-row>
+                    <ion-col>
+                     <button ion-button class="square" color="ldanger" (click)="showNoProfileExist(user)">BMI</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button class="square" color="lcalories" (click)="showNoProfileExist(user)">Calories</button>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="top-bot-mar">
+                      <button ion-button class="square" color="lmeal" (click)="showNoProfileExist(user)">Select Meal</button>
+                    </ion-col>
+                    <ion-col class="top-bot-mar">
+                      <button ion-button class="square" color="lconsumption" (click)="showNoProfileExist(user)">Consumption</button>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                      <ion-col>
+                        <button ion-button class="square" color="lsecondary" (click)="showNoProfileExist(user)">Body profile</button>
+                      </ion-col>
+                      <ion-col>
+                        <button ion-button class="square" color="pinkk">About</button>
+                      </ion-col>
+                    </ion-row>
+                </ion-grid>
+
+
+
+
+          </div>  
       <!-- <button [hidden]="!user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showBMI()"><span>Show BMI </span></button> -->
       <!-- <button [hidden]="user.phyProfileExits" class="hov-button" style="margin-top:50px;vertical-align:middle" (click)="showNoProfileExist(user)"><span>Show BMI </span></button> -->
        </div>
 
 
-  <div [hidden]="user.phyProfileExits" style="text-align:end !important; padding-right: 45px" >
+  <!-- <div [hidden]="user.phyProfileExits" style="text-align:end !important; padding-right: 55px" >
       <ion-fab class="bottom-item">
        <button ion-fab mini color="secondary" (click)="gotoBodySpecAdd(user)"><ion-icon style="font-size:30px" name="add"></ion-icon></button>
      </ion-fab>
  </div>
 
- <div [hidden]="!user.phyProfileExits" style="text-align:end !important; padding-right: 45px" >
+ <div [hidden]="!user.phyProfileExits" style="text-align:end !important; padding-right: 55px" >
    <ion-fab class="bottom-item">
     <button ion-fab mini color="secondary" (click)="gotoBodySpecEdit()"><ion-icon style="font-size:30px" name="clipboard"></ion-icon></button>
   </ion-fab>
-</div>
+</div> -->
 
   </ion-content>
 </span>

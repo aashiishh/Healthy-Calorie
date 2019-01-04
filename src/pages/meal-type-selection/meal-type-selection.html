@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar color="meal">
+      <div style="display:flex">
+      <ion-title text-center>Meal Selection</ion-title>
+      <ion-buttons text-end>
+        <button ion-button styl="text-transform: none" (click)="viewList()" icon-only > <ion-icon name="eye"></ion-icon></button>
+      </ion-buttons>
+    </div>
+    </ion-navbar>
+  </ion-header>
+
+
+
+
+<ion-content no-padding>
+ 
+  <ion-grid class="gg">
+    <ion-row>
+      <ion-col>
+       <button ion-button class="square" (click)="gotoBreakfast()">
+        <span><ion-icon name="cafe" style="font-size:30px"></ion-icon>
+        Breakfast</span>     
+        </button>
+      </ion-col>
+      <ion-col>
+        
+        <button ion-button class="square" (click)="gotoSnacks()"><span>
+            <ion-icon name="pizza" style="font-size:30px"></ion-icon>Snacks
+          </span>
+          </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="top-bot-mar">
+        <button ion-button class="square" (click)="gotoLunchDinner()"><span>
+          <ion-icon name="nutrition" style="font-size:30px"></ion-icon>Lunch/Dinner
+        </span>
+        </button>
+      </ion-col>
+      <ion-col class="top-bot-mar">
+        <button ion-button class="square" (click)="gotoOther()"><span><ion-icon name="restaurant" style="font-size:30px"></ion-icon>Other</span></button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div >
+  <button class="bottom-item" ion-button block round color="meal" style="text-transform:none;max-width: 95%;margin-left: 9px" (click)="viewCalories()">View Calories</button>
+  </div> 
+</ion-content>

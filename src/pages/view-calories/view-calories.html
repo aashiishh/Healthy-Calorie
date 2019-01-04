@@ -1,8 +1,8 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="calories">
     <div style="display:flex;">
-        <ion-title text-start>My Calories</ion-title>
+        <ion-title text-center>My Calories</ion-title>
         <ion-buttons text-end>
           <button ion-button styl="text-transform: none" (click)="close()" icon-only large><ion-icon name="close-circle"></ion-icon></button>
         </ion-buttons>
@@ -13,13 +13,16 @@
 
 
 <ion-content padding>
-
-<div style="padding: 5px;background:rgb(13, 4, 151);font-weight:bold;font-size:25px;color:white;text-align: center">Suggested Calories per day</div>  
-<ion-row justify-content-center style="margin:10px"><div class="circle-text" style="padding-top:70px">{{bodyProfileData.sCalories | number:'1.1-2'}}</div>
+    <div *ngIf="consumedFoodList$">
+    <div *ngFor="let food of consumedFoodList$ | async"></div>
+    </div>
+<div style="padding: 5px;background:rgb(16, 85, 150);font-weight:bold;font-size:25px;color:white;text-align: center">Suggested Calories per day</div>  
+<!-- <ion-row justify-content-center style="margin:10px"><div class="circle-text" style="padding-top:70px">{{bodyProfileData.sCalories | number:'1.1-2'}}</div> -->
+  <ion-row justify-content-center style="margin:10px"><div class="circle-text" style="padding-top:70px">{{sCals | number:'1.1-2'}}</div>
 </ion-row>
 
-<div style="padding: 5px;background:rgb(13, 4, 151);font-weight:bold;font-size:25px;color:white;text-align: center">Calories Consumed</div>  
-<ion-row justify-content-center style="margin:10px"><div class="circle-text" style="padding-top:70px">0</div>
+<div style="padding: 5px;background:rgb(16, 85, 150);font-weight:bold;font-size:25px;color:white;text-align: center">Calories Consumed</div>  
+<ion-row justify-content-center style="margin:10px"><div class="circle-text" style="padding-top:70px"><span *ngIf="TCal.totalCalories">{{TCal.totalCalories}}</span><span *ngIf="!TCal.totalCalories">0</span></div>
 </ion-row>
 
 </ion-content>

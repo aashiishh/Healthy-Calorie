@@ -34,13 +34,21 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
+  primary:    #6fa2fa,
+  lprimary:    #4e8efd,
+  secondary:  #0ad688,
+  lsecondary: rgb(79, 211, 160),
+  danger:     #f01818,
+  ldanger:    #e04242,
   light:      #f4f4f4,
   dark:       #222,
-  fanta:      orange,
-  tgreen:     rgb(33, 250, 178)
+  consumption:rgb(107, 0, 128), 
+  lconsumption:rgb(124, 49, 138),
+  calories:   rgb(16, 85, 150),
+  lcalories:   rgb(52, 109, 163),
+  meal:       rgb(0, 204, 204),
+  lmeal:      rgb(57, 203, 206),
+  pinkk:       rgb(235, 109, 59)
 );
 
 

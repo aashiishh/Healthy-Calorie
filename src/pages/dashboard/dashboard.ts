@@ -11,6 +11,8 @@ import { EditbodyprofilePage } from '../editbodyprofile/editbodyprofile';
 import { BmiPage } from '../bmi/bmi';
 import { PHY_Profile } from '../../models/phyProfile';
 import { ViewCaloriesPage } from '../view-calories/view-calories';
+import { CosumedMealListPage } from '../cosumed-meal-list/cosumed-meal-list';
+import { MealTypeSelectionPage } from '../meal-type-selection/meal-type-selection';
 
 @IonicPage()
 @Component({
@@ -30,10 +32,16 @@ export class DashboardPage {
  currentUser : any;
  userPhyProfileList$ : Observable<PHY_Profile[]>;
  usersList$: Observable<Credentials[]>; 
+ uList : Observable<any[]>;
+//  hr : number;
+//  min : number;
+//  sec : number;
+//  miliSec : number;
+//  time : number;
 //  bodyProfileData = {} as PHY_Profile;
-  constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,private dbService: DatabaseService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
+  constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
     this.currentUser= this.authServ.getCurrentUser();
-    this.usersList$ = this.dbService
+    this.usersList$ = this.dbServ
           .getUsersList()
           .snapshotChanges()
           .map(
@@ -49,6 +57,23 @@ export class DashboardPage {
             }))
         })
         console.log('body list-->',this.userPhyProfileList$)
+        // this.time = new Date().getTime();
+        // console.log(new Date().getUTCHours(),new Date().getUTCMinutes())
+        // this.hr = new Date().getHours();
+        // this.min = new Date().getMinutes();
+        // this.sec = new Date().getSeconds();
+        // this.miliSec = new Date().getMilliseconds();
+        // console.log(this.hr,' ',this.min,' ',this.sec,' ',this.miliSec)
+    //  this.uList = this.dbServ.getUsersList().snapshotChanges(); 
+    //  this.uList.forEach( user => {
+    //   user.forEach( userData =>{
+    //     let data = userData.payload.val();
+    //     let key = userData.payload.key;
+    //     if(data.name == 'Janya')
+    //     console.log( "Key: ", id, " Data: " , data );
+    //     });
+    // });
+
   }
 
   ionViewDidLoad() {
@@ -60,9 +85,15 @@ export class DashboardPage {
    
     showNoProfileExist(user : Credentials)
     {
-      this.mesServ.showAlert('oops!','Your body profile is not completed, please update your body profile first').onDidDismiss(() => {
+      this.mesServ.showAlert('oops!','Please complete your body profile first').onDidDismiss(() => {
         this.navCtrl.push(UserBodySpecificationPage,{currentUser: user});
       })
+    }
+
+    gotoMealSelection(bodyProfileData : PHY_Profile)
+    {
+      // this.navCtrl.push(SelectMealPage);
+      this.navCtrl.push(MealTypeSelectionPage,{suggestedCals : bodyProfileData.sCalories});   // sending number to MealTypeSelectionPage 
     }
 
     presentPopover(myEvent) {
@@ -91,8 +122,19 @@ export class DashboardPage {
   
     viewCalories(bodyProfileData : PHY_Profile )
     {
-      const modal = this.modalCtrl.create(ViewCaloriesPage,{profileData : bodyProfileData});
+      // const modal = this.modalCtrl.create(ViewCaloriesPage,{profileData : bodyProfileData});  // for sending object to a page
+      // modal.present(); 
+      const modal = this.modalCtrl.create(ViewCaloriesPage,{sCalories : bodyProfileData.sCalories});  // sending only single variable
       modal.present(); 
+    }
+
+    viewConsumption()
+    {
+      this.navCtrl.push(CosumedMealListPage);
+    }
+
+    gotoAbout(){
+      this.mesServ.aboutPrompt();
     }
 
 }

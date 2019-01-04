@@ -1,0 +1,79 @@
+<ion-header>
+
+  <ion-navbar color="meal">
+    <div style="display:flex">
+      <ion-title text-center>{{foodDetails.name}}</ion-title>
+      <ion-buttons text-end>
+        <button ion-button styl="text-transform: none" (click)="closeOnCloseButton()" icon-only large><ion-icon name="close-circle"></ion-icon></button>
+      </ion-buttons>
+  </div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding >
+
+  <ion-card >
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/healthy_icon.png">
+      </ion-avatar>
+      <h2>{{foodDetails.name}}</h2>
+      <h3>Calories:&nbsp;<span style="color:#d10404">{{foodDetails.calories}}</span></h3>
+    </ion-item>
+  
+    <!-- <img src="'{{image}}'"> -->
+  
+    <ion-card-content>
+      <h4>{{foodDetails.description}}</h4>
+    </ion-card-content>
+  
+    <ion-row>
+      <ion-col col-auto no-padding>
+        <div style="line-height: 32px;padding-left:0.9em" icon-start clear small>
+          <!-- <ion-icon name="clipboard"></ion-icon> -->
+          <div><span style="color:#488aff">Quantity:&nbsp; {{foodDetails.quantity}} {{foodDetails.measure_in}}</span></div>
+        </div>
+      </ion-col>
+      <ion-col no-padding text-end>
+        <button ion-button icon-start clear small (click)="add()"  style="padding-right:3px;text-transform: none">
+          <ion-icon name="add"></ion-icon>
+          <div>Add</div>
+        </button>
+      </ion-col>
+      <ion-col no-padding text-end>
+        <button ion-button icon-start clear small (click)="remove()" style="padding-left:3px;text-transform: none">
+          <ion-icon name="remove"></ion-icon>
+          <div>Remove</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="foodDetails.name=='Omelette'">
+        <ion-col col-auto no-padding>
+          <div style="line-height: 32px;padding-left:0.9em" icon-start clear small>
+            <!-- <ion-icon name="clipboard"></ion-icon> -->
+            <div><span style="color:#488aff">Quantity:&nbsp; {{foodDetails.add_on_quantity}} {{foodDetails.add_on_name}}</span></div>
+          </div>
+        </ion-col>
+        <ion-col no-padding text-end>
+          <button ion-button icon-start clear small (click)="add_Add_On()"  style="padding-right:3px;text-transform: none">
+            <ion-icon name="add"></ion-icon>
+            <div>Add</div>
+          </button>
+        </ion-col>
+        <ion-col no-padding text-end>
+          <button ion-button icon-start clear small (click)="remove_Add_On()" style="padding-left:3px;text-transform: none">
+            <ion-icon name="remove"></ion-icon>
+            <div>Remove</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  
+  </ion-card>
+
+  <div text-center><button ion-button round (click)="addFoodItem()" color="meal">Add&nbsp;<span style="color:rgb(219, 233, 19)">{{foodDetails.calories}}</span>&nbsp;Calories</button></div> 
+
+</ion-content>

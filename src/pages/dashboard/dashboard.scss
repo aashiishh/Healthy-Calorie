@@ -59,6 +59,7 @@ page-dashboard {
             color: #fff;
             border: 7px solid white;
             box-shadow: 0 4px #131616;
+            text-transform: none
           }
           
          // .button-lfg:hover {}
@@ -67,4 +68,30 @@ page-dashboard {
             box-shadow: 0 2px rgb(252, 252, 252);
             transform: translateY(4px);
           }
+
+
+          .square {
+            width: 100% !important;
+            height:0 !important;
+            padding: 50% 0 50% 0 !important;
+            //background-color : rgb(5, 183, 238);
+            }
+    
+            .gg 
+            {
+                // margin-top: 50px;
+                padding-left: 0px;
+            }
+            .gg ion-col
+            {
+                padding: 0.5px
+            }
+    
+            .gg .top-bot-mar
+            {
+                margin-top: -7px !important;
+                margin-bottom: -7px !important;
+            }
+
+
 }

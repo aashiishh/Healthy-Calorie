@@ -92,4 +92,55 @@ export class MessageService {
       this.loading.present();
     }
 
+    aboutPrompt(){
+      let alert = this.alertctrl.create({
+        title: 'About',
+        message: '"Healthy Calorie helps you to manage your calorie intake, by eating healthy" <br> Healthy Calorie is the best guide to calories and weight control. <br><br> <u><b>Key Features</b></u><br><br>User body profile is maintained<br><br>BMI Calculator<br><br>Suggest the calorie consumption according to your body profile<br><br>List of total consumption is maintained<br><br>Counts the calorie according to the consumption<br><br>List of healthy food items is provided',
+
+        buttons: ['Okay']
+      });
+      alert.present();
+    }
+
+    otherMealPrompt(){
+      return new Promise((resolve,reject) => {
+      let alert = this.alertctrl.create({
+        subTitle: 'Enter the details of food item',
+        inputs: [
+          {
+            name: 'name',
+            placeholder: 'Name'
+          },
+          {
+            name: 'quantity',
+            placeholder: 'Quantity',
+            type: 'number'
+          },
+          {
+            name: 'calories',
+            placeholder: 'Calories (per unit)'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Submit',
+            handler: data => {
+              if(data.name && data.calories && data.quantity)
+              resolve(data);
+              else
+              resolve(0);
+            }
+          }
+        ]
+      });
+      alert.present();
+    })
+    }
 }

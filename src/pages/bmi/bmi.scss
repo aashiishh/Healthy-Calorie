@@ -91,7 +91,7 @@ page-bmi {
   vertical-align: middle;
   border-radius: 50%;
   /*make it pretty*/
-  background: rgb(21, 126, 247);
+  background: #f53d3d;
   color: #fff;
   font: 40px "josefin sans", arial; /*change this
   for font-size and font-family*/
@@ -113,14 +113,20 @@ page-bmi {
 
   .c1
  {
-   border: 4px rgb(13, 241, 89) solid;
+  //  border: 1px rgb(13, 241, 89) solid;
+  color : rgb(0, 0, 0);
+   background: rgb(2, 255, 255);
  }
   .c2
  {
-   border: 4px rgb(223, 33, 74) solid;
+  //  border: 1px rgb(223, 33, 74) solid;
+  color : rgb(0,0,0);
+   background: rgb(2, 255, 255);
  }
   .c3
  {
-   border: 4px rgb(10, 122, 226) solid;
+  //  border: 1px rgb(10, 122, 226) solid;
+  color : rgb(0, 0, 0);
+   background: rgb(2, 255, 255);
  }
 }

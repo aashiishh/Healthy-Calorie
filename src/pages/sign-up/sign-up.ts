@@ -39,7 +39,7 @@ export class SignUpPage {
   async signUp(localUser : Credentials)
   {
      this.messServ.showLoading('creating account...');
-     localUser.photoURL="http://downloadicons.net/sites/default/files/contacts-icon-64397.png";
+     localUser.photoURL="https://profiles.utdallas.edu/img/default.png";
     await this.authServ.signUp(localUser).then(result =>{
       if(result == 1)
     //this.navCtrl.setRoot(HomePage);  
