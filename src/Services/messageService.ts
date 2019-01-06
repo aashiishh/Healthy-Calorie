@@ -118,7 +118,8 @@ export class MessageService {
           },
           {
             name: 'calories',
-            placeholder: 'Calories (per unit)'
+            placeholder: 'Calories (per unit)',
+            type: 'number'
           }
         ],
         buttons: [

@@ -22,8 +22,8 @@ export class LoginPage {
         phyProfileExits : false
   };
   constructor(public alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams, public mesServ: MessageService,public authService:AuthService) {
-    this.user.email = 'chaturvedi.ashish728@gmail.com';
-    this.user.password ='123123';
+    // this.user.email = 'chaturvedi.ashish728@gmail.com';
+    // this.user.password ='123123';
 }
 
 ionViewDidLoad() {
