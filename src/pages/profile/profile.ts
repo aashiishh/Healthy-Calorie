@@ -61,7 +61,7 @@ this.viewCtrl.dismiss();
         else
         count++;
     }
-    if(updatedData.email)
+    /*if(updatedData.email)
     {
        if(tarUser.email != updatedData.email)
         {  
@@ -94,7 +94,7 @@ this.viewCtrl.dismiss();
         }
         else
         count++;
-    }
+    }*/
     if(updatedData.phoneNo)
     {
        if(tarUser.phoneNo != updatedData.phoneNo)
@@ -103,13 +103,13 @@ this.viewCtrl.dismiss();
         count++;
     }
 
-    if(updatedData.photoURL)
+   /* if(updatedData.photoURL)
     {
        if(tarUser.photoURL != updatedData.photoURL)
         tarUser.photoURL = updatedData.photoURL;
         else
         count++;
-    }
+    }*/
       console.log('Count==>',count)
 
       
@@ -118,7 +118,7 @@ this.viewCtrl.dismiss();
       this.mesService.loading.dismiss();
       this.mesService.showAlert('oops!!','you cannot update profile with same data');
     }
-    else if(emailChangeConfirm == 1)
+   /* else if(emailChangeConfirm == 1)
     {
       await this.authServ.updateEmail(tarUser.email).then(result => {
           if(result == 1)
@@ -172,7 +172,7 @@ this.viewCtrl.dismiss();
       //     })
       //     //this.close();
       // })
-    } 
+    } */
     else
     {
       this.dbServe.editUser(tarUser).then(result =>

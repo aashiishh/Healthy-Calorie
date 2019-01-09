@@ -25,6 +25,7 @@
           <ion-label color="primary" style="margin-right:30px">Age</ion-label>
           <ion-input type="number" placeholder="{{ubp.age}} years" [(ngModel)]="proData.age"></ion-input>
         </ion-item> 
+        <span [hidden]="(proData.age < 120 && proData.age > 0) || !proData.age" style="color:red;margin-left: 15px">*age not acceptable</span>
 
   <ion-item>
     <ion-label color="primary">Weight</ion-label>
@@ -34,15 +35,17 @@
       <!-- <ion-option value="lb">lb</ion-option> -->
     </ion-select>
   </ion-item>
+  <span [hidden]="(proData.weight < 600 && proData.weight > 0) || !proData.weight" style="color:red;margin-left: 15px">*weight not acceptable</span>
+
 
   <ion-item>
-      
     <ion-label color="primary">Height</ion-label>
     <ion-input type="number" placeholder="{{ubp.height}}" [(ngModel)]="proData.height"></ion-input>
     <ion-select placeholder="{{ubp.heightUnit}}" [(ngModel)]="proData.heightUnit" interface="popover">
       <ion-option value="cm">cm</ion-option>
     </ion-select>
     </ion-item>
+    <span [hidden]="(proData.height < 243 && proData.height > 10) || !proData.height" style="color:red;margin-left: 15px">*height not acceptable</span>
 
   <ion-item>
       <ion-label color="primary">How active are you?</ion-label>
@@ -63,8 +66,8 @@
         </ion-select>
       </ion-item>
 
-  <button ion-button block color="primary" style="text-transform:none;margin-top: 30px" (click)="editPHYProfile(ubp)">Save</button>
-
+  <button ion-button block color="primary" [disabled]="(proData.height && (proData.height > 243 || proData.height < 10)) || (proData.weight && (proData.weight > 600 || proData.weight < 1)) || (proData.age && (proData.age > 120 || proData.age < 1))" style="text-transform:none;margin-top: 30px" (click)="editPHYProfile(ubp)">Save</button>
+  
 
 </ion-list>
 

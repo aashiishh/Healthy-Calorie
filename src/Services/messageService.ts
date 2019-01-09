@@ -34,6 +34,20 @@ export class MessageService {
     toast.present();
   }
 
+  presentToastTop(message) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
+
   emailChangeConfirmation()
   {   
       let alert = this.alertctrl.create({

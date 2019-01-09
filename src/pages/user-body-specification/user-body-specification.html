@@ -19,6 +19,7 @@
           <ion-label color="primary" style="margin-right:30px">Age</ion-label>
           <ion-input type="number" placeholder="enter age" [(ngModel)]="phyProfileData.age" required></ion-input>
         </ion-item> 
+        <span [hidden]="(phyProfileData.age < 120 && phyProfileData.age > 0) || !phyProfileData.age" style="color:red;margin-left: 15px">*age not acceptable</span>
 
   <ion-item>
     <ion-label color="primary">Weight</ion-label>
@@ -28,6 +29,7 @@
       <!-- <ion-option value="lb">lb</ion-option> -->
     </ion-select>
   </ion-item>
+  <span [hidden]="(phyProfileData.weight < 600 && phyProfileData.weight > 0) || !phyProfileData.weight" style="color:red;margin-left: 15px">*weight not acceptable</span> 
 
   <ion-item>
     <ion-label color="primary">Height</ion-label>
@@ -37,6 +39,7 @@
       <!-- <ion-option value="ft-in">ft</ion-option> -->
     </ion-select>
   </ion-item>
+  <span [hidden]="(phyProfileData.height < 243 && phyProfileData.height > 10) || !phyProfileData.height" style="color:red;margin-left: 15px">*height not acceptable</span>
 
       <ion-item>
           <ion-label color="primary">How active are you?</ion-label>
@@ -58,7 +61,7 @@
           </ion-item>
    
 
-  <button ion-button block color="primary" [disabled]="!phyProfileData.weightUnit|| !phyProfileData.heightUnit ||!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender || !phyProfileData.aFactor || !phyProfileData.mode" style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>
+  <button ion-button block color="primary" [disabled]="!phyProfileData.weightUnit|| !phyProfileData.heightUnit ||!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender || !phyProfileData.aFactor || !phyProfileData.mode || phyProfileData.height > 243 || phyProfileData.height < 10 || phyProfileData.weight > 600 || phyProfileData.weight < 1 || phyProfileData.age > 120 || phyProfileData.age < 1" style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>
 
 </ion-list>
 

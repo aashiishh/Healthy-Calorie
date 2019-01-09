@@ -1,11 +1,19 @@
 page-profile {
 
-    .circle-pic{
+   /* .circle-pic{
         // width:35px;
         // height:35px;
         -webkit-border-radius: 50%;
         border-radius: 50%;
-    }
+    } */
 
+    .email{
+
+        :disabled::placeholder         // to change disabled placeholders color
+         {
+           color:red !important;
+           font-weight: bold;
+         }
+     }
 
 }
