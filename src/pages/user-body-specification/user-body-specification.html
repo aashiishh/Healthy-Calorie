@@ -9,30 +9,38 @@
 <ion-list>
     <ion-item>
         <ion-label color="primary">Gender</ion-label>
-        <ion-select [(ngModel)]="phyProfileData.gender" interface="popover">
+        <ion-select [(ngModel)]="phyProfileData.gender" interface="popover" required>
           <ion-option value="f">Female</ion-option>
           <ion-option value="m">Male</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
-          <ion-label color="primary">Age</ion-label>
-          <ion-input type="number" placeholder="age in yr" [(ngModel)]="phyProfileData.age"></ion-input>
+          <ion-label color="primary" style="margin-right:30px">Age</ion-label>
+          <ion-input type="number" placeholder="enter age" [(ngModel)]="phyProfileData.age" required></ion-input>
         </ion-item> 
 
   <ion-item>
     <ion-label color="primary">Weight</ion-label>
-    <ion-input type="number" placeholder="weight in kg" [(ngModel)]="phyProfileData.weight"></ion-input>
+    <ion-input type="number" placeholder="enter weight" [(ngModel)]="phyProfileData.weight" required></ion-input>
+    <ion-select placeholder="select unit" [(ngModel)]="phyProfileData.weightUnit" interface="popover">
+      <ion-option value="kg">kg</ion-option>
+      <!-- <ion-option value="lb">lb</ion-option> -->
+    </ion-select>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary">Height</ion-label>
-    <ion-input type="number" placeholder="height in meters"  [(ngModel)]="phyProfileData.height"></ion-input>
+    <ion-input type="number" placeholder="enter height"  [(ngModel)]="phyProfileData.height" required></ion-input>
+    <ion-select placeholder="select unit" [(ngModel)]="phyProfileData.heightUnit" interface="popover">
+      <ion-option value="cm">cm</ion-option>
+      <!-- <ion-option value="ft-in">ft</ion-option> -->
+    </ion-select>
   </ion-item>
 
       <ion-item>
           <ion-label color="primary">How active are you?</ion-label>
-          <ion-select [(ngModel)]="phyProfileData.aFactor" interface="popover">
+          <ion-select [(ngModel)]="phyProfileData.aFactor" interface="popover" required>
               <ion-option value="sedentary">sedentary(no activity)</ion-option>
             <ion-option value="light">light(1-2 days/week)</ion-option>
             <ion-option value="moderate">moderate(3-5 days/week)</ion-option>
@@ -42,15 +50,15 @@
     
         <ion-item>
             <ion-label color="primary">I want to</ion-label>
-            <ion-select [(ngModel)]="phyProfileData.mode" interface="popover">
-                <ion-option value="loose weight"> loose weight</ion-option>
-              <ion-option value="maintain weight"> maintain weight</ion-option>
-              <ion-option value="gain weight"> gain weight</ion-option>
+            <ion-select [(ngModel)]="phyProfileData.mode" interface="popover" required>
+                <ion-option value="loose weight">loose weight</ion-option>
+              <ion-option value="maintain weight">maintain weight</ion-option>
+              <ion-option value="gain weight">gain weight</ion-option>
             </ion-select>
           </ion-item>
    
 
-  <button ion-button block color="primary" [disabled]="!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender || !phyProfileData.aFactor || !phyProfileData.mode" style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>
+  <button ion-button block color="primary" [disabled]="!phyProfileData.weightUnit|| !phyProfileData.heightUnit ||!phyProfileData.height || !phyProfileData.weight || !phyProfileData.age || !phyProfileData.gender || !phyProfileData.aFactor || !phyProfileData.mode" style="text-transform:none;margin-top: 30px" (click)="saveProfile(phyProfileData)">Save</button>
 
 </ion-list>
 

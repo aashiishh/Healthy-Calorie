@@ -33,7 +33,7 @@ export class APIService {
     // const headers = new HttpHeaders({"X-Mashape-Key" : 'tqp2aUUHx6mshBnbeq9h8TqRzxhFp1uZ3GjjsnvywQxSZvaWNs',"Accept" : 'application/json','Content-Type' : 'application/json'})
     // const requestOptions = new HttpRequest({ headers: headers });
     return new Promise( (resolve,reject) => { 
-    let postData = {"weight":{"value":profileData.weight,"unit":"kg"},"height":{"value":profileData.height,"unit":"m"},"sex":profileData.gender,"age":profileData.age}
+    let postData = {"weight":{"value":profileData.weight,"unit":profileData.weightUnit},"height":{"value":profileData.height,"unit":profileData.heightUnit},"sex":profileData.gender,"age":profileData.age}
 
     this.httpClient.post("https://bmi.p.mashape.com/", postData, { headers : new HttpHeaders({"X-Mashape-Key" : 'tqp2aUUHx6mshBnbeq9h8TqRzxhFp1uZ3GjjsnvywQxSZvaWNs',"Accept" : 'application/json','Content-Type' : 'application/json'})})
       .subscribe(data => {

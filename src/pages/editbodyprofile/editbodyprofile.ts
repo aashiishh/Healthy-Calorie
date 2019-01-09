@@ -38,26 +38,28 @@ export class EditbodyprofilePage {
   {
      let count = false;
      let flag =  false;
+     console.log(ubp);
      this.mesServ.showLoading('please wait...');
-       if(this.proData.age || this.proData.height  || this.proData.weight || this.proData.mode || this.proData.aFactor)
+       if(this.proData.age || this.proData.height || this.proData.weight || this.proData.mode || this.proData.aFactor)
           {
             if(this.proData.age && ubp.age!=this.proData.age)
             { 
               ubp.age=this.proData.age;
               count = true;
              } 
-            if(this.proData.height && ubp.height!=this.proData.height) 
+            if(this.proData.height && ubp.height!=this.proData.height)   
              {
               ubp.height=this.proData.height;
               count = true;
              }
-             if( this.proData.weight && ubp.weight!=this.proData.weight) 
+             if( this.proData.weight && ubp.weight!=this.proData.weight)  
              {
                ubp.weight=this.proData.weight;
                count = true;
              }
 
             // changes in weight or height or age
+
              if(count)
              {
             let result = await this.getValuesFromBMI_API(ubp);
@@ -115,7 +117,7 @@ export class EditbodyprofilePage {
                 this.mesServ.loading.dismiss();
                 this.mesServ.loading.onDidDismiss(() => 
                 {
-                  this.mesServ.showAlert('Thanks','your body profile has been saved!');
+                  this.mesServ.showAlert('Thanks!','Your body profile has been saved.');
                 });
                 
               }

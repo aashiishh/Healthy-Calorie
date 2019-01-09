@@ -22,19 +22,27 @@
      </ion-item>
 
       <ion-item>
-          <ion-label color="primary">Age(in yrs)</ion-label>
-          <ion-input type="number" placeholder="{{ubp.age}}" [(ngModel)]="proData.age"></ion-input>
+          <ion-label color="primary" style="margin-right:30px">Age</ion-label>
+          <ion-input type="number" placeholder="{{ubp.age}} years" [(ngModel)]="proData.age"></ion-input>
         </ion-item> 
 
   <ion-item>
-    <ion-label color="primary">Weight(in kgs)</ion-label>
+    <ion-label color="primary">Weight</ion-label>
     <ion-input type="number" placeholder="{{ubp.weight}}" [(ngModel)]="proData.weight"></ion-input>
+    <ion-select placeholder="{{ubp.weightUnit}}" [(ngModel)]="proData.weightUnit" interface="popover">
+      <ion-option value="kg">kg</ion-option>
+      <!-- <ion-option value="lb">lb</ion-option> -->
+    </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-label color="primary">Height(in meters)</ion-label>
+      
+    <ion-label color="primary">Height</ion-label>
     <ion-input type="number" placeholder="{{ubp.height}}" [(ngModel)]="proData.height"></ion-input>
-  </ion-item>
+    <ion-select placeholder="{{ubp.heightUnit}}" [(ngModel)]="proData.heightUnit" interface="popover">
+      <ion-option value="cm">cm</ion-option>
+    </ion-select>
+    </ion-item>
 
   <ion-item>
       <ion-label color="primary">How active are you?</ion-label>

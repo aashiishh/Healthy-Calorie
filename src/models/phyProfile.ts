@@ -14,4 +14,6 @@ export interface PHY_Profile
     ideal_weight? : string;
     status? : string;
     bmr? : number;
+    heightUnit : string;
+    weightUnit : string;
 }

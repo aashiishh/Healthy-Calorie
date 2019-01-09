@@ -22,7 +22,7 @@ export class UserBodySpecificationPage {
   phyProfileData = {} as PHY_Profile ;
   user : Credentials; 
   BMIresult : any;
-  
+  heightUnit : string;
   constructor(private BMI_API:APIService,private authServ: AuthService,private mesServ: MessageService,public navCtrl: NavController, public navParams: NavParams,private dbServ:DatabaseService) {
   this.user = this.navParams.get('currentUser');  //go get parameters from nav params
    console.log('Got user from dashboard-->',this.user);
@@ -59,7 +59,7 @@ export class UserBodySpecificationPage {
             this.mesServ.loading.dismiss();
             this.mesServ.loading.onDidDismiss(() => 
             {
-              this.mesServ.showAlert('Thanks','your body profile has been saved!').onDidDismiss(() => {
+              this.mesServ.showAlert('Thanks!','Your body profile has been saved.').onDidDismiss(() => {
                   this.navCtrl.setRoot(DashboardPage);
               });
   
