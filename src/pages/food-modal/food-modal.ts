@@ -4,6 +4,7 @@ import { Food_Items } from '../../models/foodModal';
 import { MessageService } from '../../Services/messageService';
 import { SelectedFood } from '../../models/selectedFoodModal';
 import { AuthService } from '../../Services/authService';
+import { AdsService } from '../../Services/adsService';
 
 
 @IonicPage()
@@ -18,7 +19,7 @@ export class FoodModalPage {
    caloriesConsumed : number;
    selectedFoodCalories : number;
    image : string;
-  constructor(private authServ: AuthService,public mesServ:MessageService,public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public ads:AdsService,private authServ: AuthService,public mesServ:MessageService,public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
 
     this.foodDetails = this.navParams.get("foodInfo");
     console.log(this.foodDetails);
@@ -30,6 +31,16 @@ export class FoodModalPage {
     console.log('ionViewDidLoad FoodModalPage');
     // this.image = this.foodDetails.image;
   }
+
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
+  }
+
+   ionViewWillLeave()
+   {
+     this.ads.hideBanner();
+   }  
 
   add()
   {

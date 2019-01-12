@@ -7,6 +7,7 @@ import { AuthService } from '../../Services/authService';
 import { Observable } from 'rxjs/Observable';
 import { SelectedFood } from '../../models/selectedFoodModal';
 import { TotalCaloriesData } from '../../models/totalCaloriesModel';
+import { AdsService } from '../../Services/adsService';
 
 
 @IonicPage()
@@ -24,7 +25,7 @@ export class ViewCaloriesPage {
   TCal = {} as TotalCaloriesData;
   count = 0;
   length = 1;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,private dbServ:DatabaseService,private authServ: AuthService) {
+  constructor(public ads:AdsService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,private dbServ:DatabaseService,private authServ: AuthService) {
     this.uid = this.authServ.getUID();
     // this.bodyProfileData = this.navParams.get("profileData");
     // console.log(this.bodyProfileData);
@@ -45,11 +46,20 @@ export class ViewCaloriesPage {
          })  
         )
       })
-
+     
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewCaloriesPage');
+  }
+
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
+  }
+  ionViewWillLeave()
+  {
+    this.ads.hideBanner();
   }
 
   close() 

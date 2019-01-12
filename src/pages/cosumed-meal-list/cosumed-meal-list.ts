@@ -5,6 +5,7 @@ import { AuthService } from '../../Services/authService';
 import { SelectedFood } from '../../models/selectedFoodModal';
 import { Observable } from 'rxjs/Observable';
 import { MessageService } from '../../Services/messageService';
+import { AdsService } from '../../Services/adsService';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CosumedMealListPage {
    ConsumedFoodList$ : Observable<SelectedFood[]>;
    uid : string;
    length = false;
-  constructor(public mesServ:MessageService,public alertCtrl:AlertController,private authServ:AuthService,public navCtrl: NavController, public navParams: NavParams,private dbServ:DatabaseService)
+  constructor(public ads:AdsService,public mesServ:MessageService,public alertCtrl:AlertController,private authServ:AuthService,public navCtrl: NavController, public navParams: NavParams,private dbServ:DatabaseService)
    {
      
   this.uid = this.authServ.getUID();
@@ -36,8 +37,10 @@ export class CosumedMealListPage {
     
     }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CosumedMealListPage');
+
+  ionViewDidEnter()
+  {
+    this.ads.showInterstitial();
   }
 
   getLength()

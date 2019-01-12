@@ -30,6 +30,8 @@ import { MealTypeSelectionPage } from '../pages/meal-type-selection/meal-type-se
 import { BreakfastSelectionPage } from '../pages/breakfast-selection/breakfast-selection';
 import { LunchDinnerSelectionPage } from '../pages/lunch-dinner-selection/lunch-dinner-selection';
 import { SnacksSelectionPage } from '../pages/snacks-selection/snacks-selection';
+import { AdMobFree } from '@ionic-native/admob-free';
+import { AdsService } from '../Services/adsService';
 // import { ImagePicker } from '@ionic-native/image-picker';
 // import { Base64 } from '@ionic-native/base64';
 
@@ -90,6 +92,8 @@ import { SnacksSelectionPage } from '../pages/snacks-selection/snacks-selection'
     AuthService,
     MessageService,
     APIService,
+    AdMobFree,
+    AdsService
     // ImagePicker,
     // Base64,
   ]

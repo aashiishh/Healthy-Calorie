@@ -7,6 +7,7 @@ import { AuthService } from '../../Services/authService';
 import { DashboardPage } from '../dashboard/dashboard';
 import { APIService } from '../../Services/API-Service';
 import { MessageService } from '../../Services/messageService';
+import { AdsService } from '../../Services/adsService';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class EditbodyprofilePage {
   proData = {} as PHY_Profile;
   BMIresult : any;
   currentUser : any;
-  constructor(private BMI_API:APIService,public navCtrl: NavController,private mesServ: MessageService, public navParams: NavParams,public dbServ:DatabaseService,public authServ:AuthService) {
+  constructor(public ads:AdsService,private BMI_API:APIService,public navCtrl: NavController,private mesServ: MessageService, public navParams: NavParams,public dbServ:DatabaseService,public authServ:AuthService) {
     this.currentUser = this.authServ.getCurrentUser();
     this.userPhyProfileList$ = this.dbServ.getUsersProfileList().snapshotChanges().map(changes => {
       return changes.map(c => ({
@@ -28,10 +29,12 @@ export class EditbodyprofilePage {
   })
   console.log('body list-->',this.userPhyProfileList$)
 
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditbodyprofilePage');
+  ionViewDidEnter()
+  {
+    this.ads.showInterstitial();
   }
 
   async editPHYProfile(ubp : PHY_Profile)

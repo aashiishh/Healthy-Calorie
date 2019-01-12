@@ -13,6 +13,8 @@ import { PHY_Profile } from '../../models/phyProfile';
 import { ViewCaloriesPage } from '../view-calories/view-calories';
 import { CosumedMealListPage } from '../cosumed-meal-list/cosumed-meal-list';
 import { MealTypeSelectionPage } from '../meal-type-selection/meal-type-selection';
+import { AdsService } from '../../Services/adsService';
+
 
 @IonicPage()
 @Component({
@@ -39,7 +41,7 @@ export class DashboardPage {
 //  miliSec : number;
 //  time : number;
 //  bodyProfileData = {} as PHY_Profile;
-  constructor(private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
+  constructor(public ads: AdsService,private modalCtrl:ModalController,private mesServ: MessageService,private authServ: AuthService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl:ViewController,public popoverCtrl:PopoverController,public dbServ:DatabaseService) {
     this.currentUser= this.authServ.getCurrentUser();
     this.usersList$ = this.dbServ
           .getUsersList()
@@ -73,15 +75,18 @@ export class DashboardPage {
     //     console.log( "Key: ", id, " Data: " , data );
     //     });
     // });
-
+    
   }
 
-  ionViewDidLoad() {
-  
-     console.log('ionViewDidLoad Dashboard');
-     
-   
-    }
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
+  }
+
+  /*ionViewWillLeave()   to stop banner while leaving the page
+  {
+    this.ads.hideBanner();
+  }*/
    
     showNoProfileExist(user : Credentials)
     {

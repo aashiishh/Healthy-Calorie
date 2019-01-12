@@ -6,6 +6,7 @@ import { DatabaseService } from '../../Services/databaseService';
 import { Observable } from 'rxjs/Observable';
 import { MessageService } from '../../Services/messageService';
 import { LoginPage } from '../login/login';
+import { AdsService } from '../../Services/adsService';
 
 
 @IonicPage()
@@ -25,7 +26,7 @@ export class ProfilePage {
   }
   imgsrc :string;
   usersList$: Observable<Credentials[]>; 
-  constructor(private mesService:MessageService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,private authServ:AuthService,private dbServe:DatabaseService) {
+  constructor(public ads:AdsService,private mesService:MessageService,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,private authServ:AuthService,private dbServe:DatabaseService) {
       // this.user.email = this.authServ.getCurrentUser().email;
       this.usersList$ = this.dbServe
           .getUsersList()
@@ -40,8 +41,14 @@ export class ProfilePage {
   }
 
 ionViewDidLoad() {
- this.imgsrc = "http://downloadicons.net/sites/default/files/contacts-icon-64397.png";
+//  this.imgsrc = "http://downloadicons.net/sites/default/files/contacts-icon-64397.png";
 }
+
+
+ionViewDidEnter()
+  {
+    this.ads.showInterstitial();
+  }
 
 close() {
 this.viewCtrl.dismiss();
