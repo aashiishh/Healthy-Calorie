@@ -9,7 +9,7 @@ import { Platform } from "ionic-angular";
 
 @Injectable()
 export class AdsService {
-  bannerId: string = "ca-app-pub-6192301023590013/4617783500";
+  bannerId: string = "ca-app-pub-3208496687292405/5011054263";
   // intersId: string = "ca-app-pub-6192301023590013/3115401127";
 //   rewardId: string = "ca-app-pub-xxx-your-rewarded-id-unit";
 
