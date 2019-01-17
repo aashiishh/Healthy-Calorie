@@ -4,6 +4,7 @@ import { Credentials } from '../../models/userCred';
 import { DashboardPage } from '../dashboard/dashboard';
 import { MessageService } from '../../Services/messageService';
 import { AuthService } from '../../Services/authService';
+import { AdsService } from '../../Services/adsService';
 
 
 @IonicPage()
@@ -21,14 +22,20 @@ export class LoginPage {
         photoURL : '' ,
         phyProfileExits : false
   };
-  constructor(public alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams, public mesServ: MessageService,public authService:AuthService) {
+  constructor(public ads:AdsService,public alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams, public mesServ: MessageService,public authService:AuthService) {
     // this.user.email = 'chaturvedi.ashish728@gmail.com';
     // this.user.password ='123123';
 }
 
-ionViewDidLoad() {
-  console.log('ionViewDidLoad LoginPage');
+ionViewWillEnter()
+{
+  this.ads.showBanner();
 }
+
+ ionViewWillLeave()
+ {
+   this.ads.hideBanner();
+ }  
 
 forPass()
 {

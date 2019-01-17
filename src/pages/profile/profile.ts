@@ -45,10 +45,21 @@ ionViewDidLoad() {
 }
 
 
+/* 
 ionViewDidEnter()
   {
     this.ads.showInterstitial();
+  } */
+
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
   }
+
+   ionViewWillLeave()
+   {
+     this.ads.hideBanner();
+   }  
 
 close() {
 this.viewCtrl.dismiss();

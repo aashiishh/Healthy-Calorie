@@ -5,6 +5,7 @@ import { NavController, AlertController} from 'ionic-angular';
 // import { Observable } from 'rxjs/Observable';
 import { LoginPage } from '../login/login';
 import { SignUpPage } from '../sign-up/sign-up';
+import { AdsService } from '../../Services/adsService';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,7 @@ export class HomePage {
 
 
   srcimg : string;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public ads:AdsService) {
 
   }
 
@@ -26,8 +27,18 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.srcimg="https://www.brandcrowd.com/gallery/brands/pictures/picture13626523044082.jpg";
+    // this.srcimg="https://www.brandcrowd.com/gallery/brands/pictures/picture13626523044082.jpg";
   }
+
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
+  }
+
+   ionViewWillLeave()
+   {
+     this.ads.hideBanner();
+   }  
 
 //  public user : User = {
 //     name : '',

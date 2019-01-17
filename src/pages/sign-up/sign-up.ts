@@ -5,6 +5,7 @@ import { AuthService } from '../../Services/authService';
 import { MessageService } from '../../Services/messageService';
 import { DatabaseService } from '../../Services/databaseService';
 import { LoginPage } from '../login/login';
+import { AdsService } from '../../Services/adsService';
 
 
 
@@ -24,12 +25,18 @@ export class SignUpPage {
         phyProfileExits : false
  };
   cpass : string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private authServ:AuthService,private messServ:MessageService,private dbServ:DatabaseService) {
+  constructor(public ads:AdsService,public navCtrl: NavController, public navParams: NavParams,private authServ:AuthService,private messServ:MessageService,private dbServ:DatabaseService) {
   }
 
-  ionViewDidLoad() {
-    
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
   }
+
+   ionViewWillLeave()
+   {
+     this.ads.hideBanner();
+   }  
 
   goToLogin()
   {

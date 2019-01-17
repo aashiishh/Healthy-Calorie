@@ -31,11 +31,22 @@ export class EditbodyprofilePage {
 
 
   }
-
+ 
+  /*
   ionViewDidEnter()
   {
     this.ads.showInterstitial();
+  } */
+
+  ionViewWillEnter()
+  {
+    this.ads.showBanner();
   }
+
+   ionViewWillLeave()
+   {
+     this.ads.hideBanner();
+   }  
 
   async editPHYProfile(ubp : PHY_Profile)
   {

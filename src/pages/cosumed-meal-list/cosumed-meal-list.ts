@@ -38,10 +38,10 @@ export class CosumedMealListPage {
     }
 
 
-  ionViewDidEnter()
+ /* ionViewDidEnter()
   {
     this.ads.showInterstitial();
-  }
+  } */
 
   getLength()
   {

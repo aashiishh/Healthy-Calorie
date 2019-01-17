@@ -9,8 +9,8 @@ import { Platform } from "ionic-angular";
 
 @Injectable()
 export class AdsService {
-  bannerId: string = "ca-app-pub-6192301023590013/4617783544";
-  intersId: string = "ca-app-pub-6192301023590013/3115401127";
+  bannerId: string = "ca-app-pub-6192301023590013/4617783500";
+  // intersId: string = "ca-app-pub-6192301023590013/3115401127";
 //   rewardId: string = "ca-app-pub-xxx-your-rewarded-id-unit";
 
   constructor(private admobFree: AdMobFree, public platform: Platform) {}
@@ -56,7 +56,7 @@ export class AdsService {
     });
  } */
 
-  showInterstitial() {
+  /*showInterstitial() {
     this.platform.ready().then(() => {
       const interConfig: AdMobFreeInterstitialConfig = {
         id: this.intersId,
@@ -69,7 +69,7 @@ export class AdsService {
       });
     });
 
-  }  
+  } */ 
 
  /* showBanner() {
 

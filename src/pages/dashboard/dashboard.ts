@@ -78,10 +78,10 @@ export class DashboardPage {
     
   }
 
-  ionViewWillEnter()
+  /*ionViewWillEnter()
   {
     this.ads.showBanner();
-  }
+  } */
 
   /*ionViewWillLeave()   to stop banner while leaving the page
   {
